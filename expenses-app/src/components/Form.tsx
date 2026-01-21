@@ -1,13 +1,21 @@
-export const Form = () => {
+import type { ChangeEvent } from "react"
+import type { IData } from "../App"
+
+interface IFormProps {
+    data: IData,
+    handleFormChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
+}
+
+export const Form = ({ data, handleFormChange }: IFormProps) => {
     return (
-        <form className="form">
-            <input type="text" placeholder="Expense title" name="title" />
-            <input type="number" placeholder="Amount" name="amount" />
-            <select name="category">
+        <form onSubmit={(e) => } className="form">
+            <input onChange={handleFormChange} value={data.title} type="text" placeholder="Expense title" name="title" />
+            <input onChange={handleFormChange} value={data.amount} type="number" placeholder="Amount" name="amount" />
+            <select onChange={handleFormChange} value={data.category} name="category">
                 <option value="">Select category</option>
-                <option>Food</option>
-                <option>Transport</option>
-                <option>Fun</option>
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="fun">Fun</option>
             </select>
             <button>Add Expense</button>
         </form>
